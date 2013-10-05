@@ -34,6 +34,16 @@ if Chef::VERSION.to_i >= 11
       resources("yum_repository[percona]").run_action(:add)
     end
   end
+else
+  if node.run_state[:seen_recipes].key('mysql::percona_repo')
+    case node['platform']
+    when "ubuntu", "debian"
+      resources("apt_repository[percona]").run_action(:add)
+    when "centos", "amazon", "redhat"
+      resources("yum_key[RPM-GPG-KEY-percona]").run_action(:add)
+      resources("yum_repository[percona]").run_action(:add)
+    end
+  end
 end
 
 node['mysql']['client']['packages'].each do |mysql_pack|
