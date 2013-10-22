@@ -50,4 +50,6 @@ node['mysql']['client']['packages'].each do |mysql_pack|
   resources("package[#{mysql_pack}]").run_action(:install)
 end
 
-chef_gem "mysql"
+unless node['mysql']['client']['skip_gem'].to_s.downcase == 'true'
+  chef_gem "mysql"
+end
