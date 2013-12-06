@@ -43,6 +43,10 @@ nice            = <%= node['mysql']['nice'] %>
 #   also need to also adjust /etc/apparmor.d/usr.sbin.mysqld.
 #
 
+<%- if node['mysql']['default-storage-engine'] %>
+default-storage-engine = <%= node['mysql']['default-storage-engine'] %>
+<%- end %>
+
 user            = mysql
 pid-file        = <%= node['mysql']['pid_file'] %>
 socket          = <%= node['mysql']['socket'] %>
