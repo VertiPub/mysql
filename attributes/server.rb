@@ -45,6 +45,7 @@ when "rhel", "fedora"
     default['mysql']['service_name']            = "mysqld"
     default['mysql']['pid_file']                    = "/var/run/mysqld/mysqld.pid"
   end
+  default['mysql']['default-storage-engine']  = 'innodb'
   default['mysql']['server']['packages']      = %w{mysql-server}
   default['mysql']['basedir']                 = "/usr"
   default['mysql']['data_dir']                = "/var/lib/mysql"
