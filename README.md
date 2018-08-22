@@ -1,3 +1,5 @@
+# This repository has been archived.
+
 mysql Cookbook
 ==============
 Installs and configures MySQL client or server.
